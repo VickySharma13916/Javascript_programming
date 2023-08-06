@@ -66,3 +66,60 @@ function abcd(a, b) {
 
 var ans1 = abcd(6, 5);
 console.log(ans1);
+
+// print LCM of numbers
+
+function findLCM(n, m) {
+  let lcm = m > n ? m : n;
+  while (true) {
+    if (lcm % n === 0 && lcm % m === 0) {
+      return lcm;
+    }
+    lcm++;
+  }
+}
+
+console.log(findLCM(61, 84));
+
+// print HCF of numbers
+function fincHCF(a, b) {
+  if (b === 0) return a;
+  return fincHCF(b, a % b);
+}
+
+console.log(fincHCF(6, 10));
+
+// Print the count of vowels in the string
+
+function printNumOfVowels(str) {
+  if (str.length === 0 || typeof str !== "string") return "Not a string";
+  let vowel = ["a", "e", "i", "o", "u"];
+  let count = 0;
+  let lowerStr = str.toLocaleLowerCase();
+  for (let j = 0; j < lowerStr.length; j++) {
+    if (vowel.includes(lowerStr[j])) {
+      count++;
+    }
+  }
+  return count;
+}
+console.log(printNumOfVowels(10));
+console.log(printNumOfVowels("Hello there is a good number of worlds"));
+
+// Print the lowestnumber closest to zero in an array of numbers
+function findClosestToZero(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) {
+    return "Invalid input";
+  }
+  let closest = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (Math.abs(arr[i]) < Math.abs(closest)) {
+      closest = arr[i];
+    } else if (Math.abs(arr[i]) === Math.abs(closest)) {
+      closest = Math.max(closest, arr[i]);
+    }
+  }
+  return closest;
+}
+const numbers = [10, 1, -3, 7, -2, -1];
+console.log(findClosestToZero(numbers));
