@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        th,
+        td {
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Table</h1>
+    <button class="table_button">Add table row</button>
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Vicky</td>
+                <td>VickySharma13916@gmail.com
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        // var a = 1;
+        // function h() {
+        //     if (a) var a = 10; 
+        //     console.log(" a   ss s s", a);
+        // }
+        // h();
+        const addButton = document.querySelector('.table_button');
+        const tableBody = document.querySelector('#myTable tbody');
+        function addTableRow() {
+            // this.style.color = 'red';
+            const newRow = document.createElement('tr');
+            const nameCell = document.createElement('td');
+            const emailCell = document.createElement('td');
+            nameCell.textContent = 'John';
+            emailCell.textContent = 'example.vicky@email.com';
+            nameCell.style.height = 'max-content';
+            emailCell.style.height = 'max-content';
+            newRow.appendChild(nameCell);
+            newRow.appendChild(emailCell);
+            tableBody.appendChild(newRow);
+        }
+        addButton.addEventListener('click', addTableRow);
+        // $(document).ready(function () {
+        //     const addButton = $('.table_button');
+        //     const tableBody = $('#myTable tbody');
+        //     function addTableRow() {
+        //         const newRow = $('<tr></tr>');
+        //         const nameCell = $('<td></td>');
+        //         const emailCell = $('<td></td>');
+        //         nameCell.text('John');
+        //         emailCell.text('example.vicky@email.com');
+        //         nameCell.css('height', 'max-content');
+        //         emailCell.css('height', 'max-content');
+        //         newRow.append(nameCell);
+        //         newRow.append(emailCell);
+        //         tableBody.append(newRow);
+        //     }
+        //     addButton.on('click', addTableRow);
+        // });
+
+
+        //This  -- in any object this is reffer to the parent object
+        function ab() {
+            console.log(this);
+        }
+        ab()
+
+
+        var obj = {
+            name: 'vicky',
+            method: function () {
+                console.log(this);
+            }
+        }
+        console.log(obj);
+
+        //Call apply bind
+        // if we have a function and a object then we want to run the function and by default value of this is reffer to the window object and we want to this for refer the function  than we use the call apply and bind
+        //call
+        function ab() {
+            console.log(this.age);
+        }
+        var obj = { age: 24 };
+        ab.call(obj)
+
+        //apply
+        function abc(v, b, c, d) {
+            console.log(this, v, b, c, d);
+        }
+        var obj = { age: 24 };
+        abc.apply(obj, [1, 2, 3, 4])
+
+        //bind 
+        function abcd() {
+            console.log(this);
+        }
+        var bindfun = abcd.bind(obj)
+        bindfun()
+    </script>
+</body>
+
+</html>
